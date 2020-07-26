@@ -6,7 +6,9 @@ userData = datetime.datetime.strptime(input('Введите дату в форм
 schedule = []
 schedule.append(datetime.datetime.strftime(userData, '%d.%m.%Y - %A'))
 delta = datetime.timedelta(days=2)
-for i in range(15):
+while delta <= datetime.timedelta(days=30):
+    if datetime.datetime.weekday(userData + delta) == 6:
+        delta += datetime.timedelta(days=1)
     schedule.append(datetime.datetime.strftime(userData + delta, '%d.%m.%Y - %A'))
     delta += datetime.timedelta(days=2)
 print('Ваше расписание на ближайший месяц:')
