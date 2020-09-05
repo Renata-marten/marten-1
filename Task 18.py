@@ -1,4 +1,4 @@
-s = input('Введите два числа через запятую')
+s = input('Введите два числа через запятую\n')
 l = len(s)
 list = []
 i = 0
@@ -15,5 +15,4 @@ while i < l:
     i += 1
     if s_int != '':
         list.append(int(s_int))
-
 print(list)
