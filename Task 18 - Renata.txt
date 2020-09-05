@@ -1,0 +1,63 @@
+--Task 18
+Дана строка, содержащая натуральные числа и слова. Необходимо сформировать список из чисел, содержащихся в этой строке. Например, задана строка "диапазон чисел от10 до 210". На выходе мы должны получить список [10, 210].
+
+s = input('Введите строку\n')
+l = len(s)
+list = []
+i = 0
+while i < l:
+    s_int = ''
+    a = s[i]
+    while '0' <= a <= '9':
+        s_int += a
+        i += 1
+        if i < l:
+            a = s[i]
+        else:
+            break
+    i += 1
+    if s_int != '':
+        list.append(int(s_int))
+print(list)
+
+--Task 18.2
+Посчитать сколько раз в файле встречается заданное слово.
+
+word = input("Введите искомое слово\n")
+w_count = 0
+with open("text.txt", encoding='utf-8') as myFile:
+    for line in myFile:
+        punct_chars = [';', ':', '!' ,'.', ',']
+        for i in punct_chars:
+            line = line.replace(i, '')
+        w_list = line.split()
+        w_count += w_list.count(word)
+print(w_count)
+
+--Task 18.3
+Написать функцию, которая будет вычислять среднее арифметическое двух введенных чисел.
+
+def average(n1, n2):
+    m = (n1 + n2) / 2
+    return m
+a = int(input("введите первое число"))
+b = int(input("введите второе число"))
+avrg = average(a, b)
+print(round(avrg, 2))
+
+--Task 18.4
+Есть словарь с названиями товаров и ценами. Написать программу, запрашивающую, какие товары пользователь хочет купить и в каком количестве, и возвращающую сумму покупки.
+
+goods = {'Хлеб': 24.3, 'Молоко': 88.7, 'Масло': 95.1, 'Вода': 15.5, 'Печенье': 35.1}
+for good, price in goods.items():
+    print(good, '-', price)
+cost = 0
+while True:
+    good = input('Что хотите купить? (н - ничего)\n')
+    if good == 'н':
+       break
+    else:
+        good = good.capitalize()
+    quantity = int(input('Сколько?\n'))
+    cost += goods[good] * quantity
+print('Общая цена покупки', cost)
